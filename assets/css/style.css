@@ -1,0 +1,52 @@
+body {
+	 
+	
+
+
+	background-color: aqua;
+
+    /**/
+
+
+}
+
+
+.letters{
+	
+	display: inline;
+	width: 40px;
+	height: 40px;
+	background-color: #4aaaa5;
+	padding: 10px; 
+}
+
+ul{
+text-align: center;
+
+}
+
+p{
+	text-align: center;
+	font-family: cursive;
+	color: purple;
+
+}
+
+h1, h3{
+	text-align: center;
+	color: blue;
+
+}
+
+img{	
+	width: 600px;
+	height: 200px;
+	margin: auto;
+}
+	
+	
+#demo{
+	position: relative;
+	top: 200px;
+	margin: auto;
+}

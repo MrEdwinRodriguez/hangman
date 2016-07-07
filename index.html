@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+   Hangman-Sports
+  </title>
+  <link type="text/css" rel="stylesheet" href="assets\css\style.css"/>
+</head>
+
+
+<body>
+
+<h1>Hangman</h1>
+<h3>Football, Basebal, and Basketball Edition</h3>
+
+<p>Guess your favorite NBA, NFL, and MLB teams</p>
+<p>You get 10 tries. Each missed letter is a try.</p>
+
+
+<!-- <img src = "assets/images/leagues.jpg"/>  -->
+
+
+
+<p id="demo"></p>
+
+
+
+
+  <script type="text/javascript">
+ 	// var movie = ["zyz", "cde", "abc", "degs"]
+ 	var team=["Patriots","Jets", "Bills", "Dolphins", "Bengals", "Steelers", "Ravens", "Browns", "Texans", "Colts", "Jaguars", "Titans","Broncos","Chiefs","Raiders","Chargers", "Redskins", "Giants", "Cowboys", "Vikings", "Packers", "Lions", "Bears", "Falcons", "Saints", "Buccaneers", "Cardinals", "Seahawks", "Rams", "Raptors", "Celtics", "Knicks", "Nets", "Cavaliers", "Pacers", "Pistons", "Bulls", "Bucks", "Heat", "Hawks", "Hornets", "Wizards", "Magic", "Warriors", "Clippers", "Kings", "Suns", "Lakers", "Spurs", "Mavericks", "Grizzlies", "Rockets", "Pelicans", "Thunder", "Blazers", "Jazz", "Nuggets", "Timberwolves", "Orioles", "Yankees", "Rays", "Indians", "Royals", "Twins", "Rangers", "Astros", "Mariners", "Athletics", "Angels", "Nationals", "Mets", "Marlins", "Phillies", "Braves", "Cubs", "Pirates", "Brewers", "Reds", "Dodgers", "Rockies", "Diamondbacks", "Padres" ]
+
+
+
+ // var str = 'hello     world  !!';
+
+
+
+
+
+	var randomTeam = team[Math.floor(Math.random() * team.length)];
+	var upperCaseWord = randomTeam.toUpperCase();
+	console.log(upperCaseWord);
+	
+
+
+
+
+var spaces = []
+// document.getElementById("demo").innerHTML = spaces;
+
+
+for (i=0; i<upperCaseWord.length; i++){
+
+	// document.write("_" + " ");
+	spaces.push("_");
+	// document.write(spaces);
+	document.getElementById("demo").innerHTML = spaces;
+}
+
+
+
+
+
+var tries = 0;
+var hits = 0;
+var guesses = [];
+var guessesAll= [];
+var misses = 0;
+var userGuess = prompt("Choose a letter:");	
+var goAgain = true;
+var wins = 0;
+var losses = 0;
+// var spaces=[];
+// document.getElementById("demo").innerHTML = spaces;
+
+
+
+var userGuess = userGuess.toUpperCase();
+console.log("cap:" + userGuess);
+
+
+
+
+guesses.push(userGuess);
+
+
+var hangman = {
+
+	size : upperCaseWord.length,
+	tries : 0,
+
+	picked:
+
+	//checks to see if letter has been used
+
+	function checkLetter (x){
+	
+	var check = guesses.indexOf(x);
+	console.log(check);
+
+	if(check >= 0){
+		
+	var userGuess = prompt("Choose a different letter:");
+	var userGuess = userGuess.toUpperCase();
+	}
+
+	else{
+		console.log("letter has not been used");
+		
+
+	}
+	},
+
+	//checks if letter is in the word
+	letterCheck : 
+
+	function checkLetter (x){
+
+	for(i=0; i<upperCaseWord.length ; i++){
+		if(upperCaseWord[i] === x){
+			// spaces.push(x);
+			// document.write(spaces);			
+			// document.write(i);
+			 hits++;
+			 spaces.splice(i, 1 , x);
+			 document.getElementById("demo").innerHTML = spaces;	
+		}
+		if(upperCaseWord[i] != x){
+
+			console.log("no match");
+			misses++;
+			console.log("current misses:" + " " + misses);
+			document.getElementById("demo").innerHTML = spaces;
+			
+			}
+
+		}
+		},
+ 
+	lives : 
+	
+		function calculateTries(y){
+			//checks if misses(y) is equal to word length.  Adds a try if it is.
+		if (y === upperCaseWord.length){
+
+		tries++;
+		console.log("no hit sucka miss count is" + y);
+		misses=0;
+		}
+
+		else {
+		console.log("That was a hit");
+		misses=0;
+	}
+	},	
+
+//checks the outcome. win, loss, or if you still have lives left
+	outcome: 
+	function calculateTries(){
+//z is hits
+if (hits === upperCaseWord.length){
+	alert("YOU WIN!!!");
+	wins++;
+	
+
+}
+//w tries
+else if(tries < 10){
+	console.log(misses);
+	console.log("you still have lives, go again");
+	// misses=0;
+	console.log("new misses count:" + " " + misses);
+	var userGuess = prompt("Choose a letter:");
+	var userGuess = userGuess.toUpperCase();
+	hangman.picked(userGuess);
+	hangman.letterCheck(userGuess);
+	hangman.lives(misses);
+	hangman.outcome();
+	guesses.push(userGuess);
+	
+	
+}
+
+else{
+	
+	alert("YOU LOST");
+	losses++;	
+}
+}
+
+
+}
+
+
+
+hangman.letterCheck(userGuess);
+hangman.lives(misses);
+hangman.outcome();
+
+
+
+
+
+
+
+ </script>
+
+</body>
+
+</html>
