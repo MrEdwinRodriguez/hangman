@@ -1,52 +1,22 @@
-body {
-	 
-	
+body{
 
-
-	background-color: aqua;
-
-    /**/
-
-
+  background-color: white;
 }
 
+
+.buttons{
+  background-color: red;
+  width: 70px;
+  height: 50px;
+  
+}
 
 .letters{
-	
-	display: inline;
-	width: 40px;
-	height: 40px;
-	background-color: #4aaaa5;
-	padding: 10px; 
-}
+    text-align: center;
+  }
 
-ul{
-text-align: center;
+.indexAll{
+  display: inline;
 
 }
 
-p{
-	text-align: center;
-	font-family: cursive;
-	color: purple;
-
-}
-
-h1, h3{
-	text-align: center;
-	color: blue;
-
-}
-
-img{	
-	width: 600px;
-	height: 200px;
-	margin: auto;
-}
-	
-	
-#demo{
-	position: relative;
-	top: 200px;
-	margin: auto;
-}
