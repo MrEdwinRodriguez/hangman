@@ -12,17 +12,32 @@ $(document).ready(function(){
   phrase = phraseArr[index]
   console.log(phrase);
 
-  for (i=0; i<phrase.length; i++){
-      
+var counter = 0;
+var lives = 9;
+
+// create spaces
+  for(i=0; i < phrase.length; i++){
+
+      if(phrase[i] == ' '){
+      var empty = $('<div>');
+      empty.addClass("index"+i)
+      empty.addClass("indexAll")
+      $(empty).append("- ");
+      $('#phraseHere').append(empty);
+
+} 
+  else{
       var empty = $('<div>');
       empty.addClass("index"+i)
       empty.addClass("indexAll")
       $(empty).append("_ ");
       $('#phraseHere').append(empty);
+      counter++;
 
-    } 
+  }
+}
 
-    
+console.log(counter)    
   
 var hits = 0;
 
@@ -60,11 +75,7 @@ var hits = 0;
 
       }
     }
-    }   
-
-      
-
-
+    }       
     });// end of on click 
 
 
