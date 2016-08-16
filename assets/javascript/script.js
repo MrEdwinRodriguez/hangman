@@ -70,8 +70,13 @@ var hits = 0;
       for(i=0; i<phrase.length ; i++){
         if(phrase[i] == x){
         hits++;
-        console.log('hi');
-        console.log(hits);
+        // document.getElementsByClassName('index'+i).innerHTML = x;
+         $('.index'+i).empty();
+         $('.index'+i).append(x);
+        // document.getElementsById("phraseHere").innerHTML = x;
+
+        console.log('index'+i);
+
 
       }
     }
