@@ -13,7 +13,9 @@ $(document).ready(function(){
   console.log(phrase);
 
 var counter = 0;
+var spaces = 0;
 var lives = 9;
+
 
 // create spaces
   for(i=0; i < phrase.length; i++){
@@ -24,6 +26,7 @@ var lives = 9;
       empty.addClass("indexAll")
       $(empty).append("- ");
       $('#phraseHere').append(empty);
+    spaces++;
 
 } 
   else{
@@ -65,8 +68,9 @@ var hits = 0;
       
     check(letter);
       
-    
+ //function check   
     function check(x){
+    var wrong = 0;
       for(i=0; i<phrase.length ; i++){
         if(phrase[i] == x){
         hits++;
@@ -75,13 +79,51 @@ var hits = 0;
          $('.index'+i).append(x);
         // document.getElementsById("phraseHere").innerHTML = x;
 
-        console.log('index'+i);
+        
+    console.log("hits:" +  hits);
 
+    //calls function to verify if game is over or not
+    winCheck(hits);
 
-      }
+      }else
+        {
+        
+        wrong++;
+        diff = wrong - spaces;
+        if(diff == counter)
+        {
+        lives--;
+        console.log("lives" + lives);
+        lossCheck(lives);
+        }
+        
+    }
+    
+    
+
     }
     }       
     });// end of on click 
+
+
+//check if you won
+function winCheck(correct){
+
+    if(correct == counter){
+    console.log('you win');
+    }else{
+    console.log('keep playing');
+    }
+}
+
+//check if loss
+function lossCheck(remain){
+    if(remain == 0){
+    console.log('you lose');
+    }else{
+    console.log('keep playing wrongs');
+    }
+}
 
 
 
