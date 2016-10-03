@@ -4,17 +4,20 @@ $(document).ready(function(){
 
   console.log(alphabets);
 
+var counter = 0;
+var spaces = 0;
+var lives = 9;
+var wins = 0;
+var losses = 0;
 
+
+function newWord(){
   var phraseArr = ['HELLO WORLD', 'BYE WORLD', 'HI WORLD', 'I LOVE CODING', 'SCHOOL IS COOL', 'HAMMER'];
 
   var index = Math.floor((Math.random() * phraseArr.length));
   
   phrase = phraseArr[index]
   console.log(phrase);
-
-var counter = 0;
-var spaces = 0;
-var lives = 9;
 
 
 // create spaces
@@ -37,9 +40,12 @@ var lives = 9;
       $('#phraseHere').append(empty);
       counter++;
 
+      
+
   }
 }
-
+}
+newWord();
 console.log(counter)    
   
 var hits = 0;
@@ -74,6 +80,7 @@ var hits = 0;
       for(i=0; i<phrase.length ; i++){
         if(phrase[i] == x){
         hits++;
+        $('#playOne').animate({marginLeft: '+=100px'});
         // document.getElementsByClassName('index'+i).innerHTML = x;
          $('.index'+i).empty();
          $('.index'+i).append(x);
@@ -93,6 +100,7 @@ var hits = 0;
         if(diff == counter)
         {
         lives--;
+        $('#playTwo').animate({marginLeft: '+=100.5px'});
         console.log("lives" + lives);
         lossCheck(lives);
         }
@@ -102,7 +110,12 @@ var hits = 0;
     
 
     }
-    }       
+    } 
+
+// $('#trackOne').animate({left: '50px'});
+
+
+
     });// end of on click 
 
 
@@ -111,6 +124,14 @@ function winCheck(correct){
 
     if(correct == counter){
     console.log('you win');
+    $("#phraseHere").empty()
+    alert('you win')
+    wins++;
+
+    newWord();
+    console.log(wins)
+    $('#winScore').empty();
+    $('#winScore').append(wins);
     }else{
     console.log('keep playing');
     }
@@ -120,10 +141,14 @@ function winCheck(correct){
 function lossCheck(remain){
     if(remain == 0){
     console.log('you lose');
+    losses++;
+    $('#loseScore').empty();
+    $('#loseScore').append(losses);    
     }else{
     console.log('keep playing wrongs');
     }
 }
+
 
 
 
