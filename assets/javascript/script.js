@@ -12,6 +12,7 @@ var losses = 0;
 
 
 function newWord(){
+
   var phraseArr = ['HELLO WORLD', 'BYE WORLD', 'HI WORLD', 'I LOVE CODING', 'SCHOOL IS COOL', 'HAMMER'];
 
   var index = Math.floor((Math.random() * phraseArr.length));
@@ -40,18 +41,19 @@ function newWord(){
       $('#phraseHere').append(empty);
       counter++;
 
-      
+
 
   }
 }
 }
 newWord();
+createLetters();
 console.log(counter)    
   
 var hits = 0;
 
 //create buttons with letter
-
+function createLetters(){
   for (i=0; i<alphabets.length; i++){
 
       var letterBtn = $('<button>');
@@ -59,11 +61,41 @@ var hits = 0;
       letterBtn.attr('data-let', alphabets[i]);
       letterBtn.text(alphabets[i]);
       $('.letters').append(letterBtn);
-
-
+}
 }
 
-  
+// //check if you won
+// function winCheck(correct){
+
+//     if(correct == counter){
+//     console.log('you win');
+//     $("#phraseHere").empty()
+//     $(".letters").empty()
+//     alert('you win')
+//     console.log(counter);
+//     wins++;
+
+//     newWord();
+//     createLetters();
+//     $('#winScore').empty();
+//     $('#winScore').append(wins);
+//     }else{
+//     console.log('keep playing');
+//     }
+// }
+
+// //check if loss
+// function lossCheck(remain){
+//     if(remain == 0){
+//     console.log('you lose');
+//     losses++;
+//     $('#loseScore').empty();
+//     $('#loseScore').append(losses);    
+//     }else{
+//     con
+//   sole.log('keep playing wrongs');
+//     }
+// }
 
 
     $('.buttons').on('click', function(){
@@ -112,10 +144,6 @@ var hits = 0;
     }
     } 
 
-// $('#trackOne').animate({left: '50px'});
-
-
-
     });// end of on click 
 
 
@@ -125,11 +153,13 @@ function winCheck(correct){
     if(correct == counter){
     console.log('you win');
     $("#phraseHere").empty()
+    $(".letters").empty()
     alert('you win')
+    console.log(counter);
     wins++;
 
     newWord();
-    console.log(wins)
+    createLetters();
     $('#winScore').empty();
     $('#winScore').append(wins);
     }else{
@@ -148,6 +178,7 @@ function lossCheck(remain){
     console.log('keep playing wrongs');
     }
 }
+
 
 
 
